@@ -30,7 +30,6 @@ export default function Card<T extends Media>({ data }: CardProps<T>) {
         items-center
       "
       >
-        {/* Contenedor de la imagen, sin flex centrar */}
         <div className="w-full h-80 bg-gray-100 overflow-hidden rounded-t-lg">
           <Image
             src={`${imageLink}/w500/${data.poster_path}`}
@@ -46,11 +45,8 @@ export default function Card<T extends Media>({ data }: CardProps<T>) {
         </div>
 
         <div className="flex items-center justify-center gap-3 py-3 px-4 w-full">
-          <h3
-            className="text-lg font-semibold text-gray-100 truncate text-center"
-            title={data.title}
-          >
-            {data.title}
+          <h3 className="text-lg font-semibold text-gray-100 truncate text-center">
+            {data.title ?? data.name}
           </h3>
 
           <Rating vote_average={data.vote_average} />
