@@ -5,8 +5,8 @@ import { Videos, videosSchema } from "@/shared/interfaces/videos";
 import { customFetch } from "../config/fetch";
 import { MovieCast, MovieCastSchema } from "@/shared/interfaces/castingMovie";
 
-export async function fetchTrendingMovies() {
-  const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
+export async function fetchTrendingMovies(page = 1) {
+  const url = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=${page}`;
   return await customFetch<FetchMoviesResponse>(url, fetchMoviesResponseSchema);
 }
 

@@ -24,8 +24,8 @@ export async function fetchSerieVideos(serie_id: number) {
   return await customFetch<Videos>(url, videosSchema);
 }
 
-export async function fetchTopRatedSeries() {
-  const url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&language=es-ES&page=1&sort_by=vote_average.desc&vote_count.gte=200`;
+export async function fetchTopRatedSeries(page = 1) {
+  const url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&language=es-ES&page=${page}&sort_by=vote_average.desc&vote_count.gte=200`;
 
   return await customFetch<Series>(url, SeriesSchema);
 }
