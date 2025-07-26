@@ -26,7 +26,8 @@ export async function customFetch<T>(
       return false;
     }
     const data = await response.json();
-    return schema.parse(data);
+    // return schema.parse(data);
+    return data;
   } catch (error) {
     console.error("Fetch or validation error:", error);
     return false;
