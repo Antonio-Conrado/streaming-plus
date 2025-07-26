@@ -25,7 +25,7 @@ const productionCountrySchema = z.object({
 });
 
 const seasonSchema = z.object({
-  air_date: z.string(),
+  air_date: z.string().nullable(),
   episode_count: z.number(),
   id: z.number(),
   name: z.string(),
@@ -47,7 +47,7 @@ const episodeSchema = z.object({
   overview: z.string(),
   vote_average: z.number(),
   vote_count: z.number(),
-  air_date: z.string(),
+  air_date: z.string().optional(),
   episode_number: z.number(),
   episode_type: z.string(),
   production_code: z.string(),

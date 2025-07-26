@@ -1,7 +1,4 @@
 import { z } from "zod";
-
-// 1. Define los schemas más pequeños primero:
-
 const GuestStarSchema = z.object({
   character: z.string(),
   credit_id: z.string(),
