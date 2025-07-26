@@ -28,6 +28,7 @@ export default function Card<T extends Media>({ data }: CardProps<T>) {
         flex
         flex-col
         items-center
+        mx-auto
       "
       >
         <div className="w-full h-80 bg-gray-100 overflow-hidden rounded-t-lg">
