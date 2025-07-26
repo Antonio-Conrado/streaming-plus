@@ -22,9 +22,9 @@ export default function GeneralInformation({
           <Rating vote_average={vote_average} />
         </div>
 
-        <div className="flex justify-around mt-5 w-1/2 mx-auto">
+        <div className="flex justify-around md:w-1/2 md:mx-auto">
           {genres.map((genre) => (
-            <div key={genre.id} className="flex flex-row gap-3">
+            <div key={genre.id} className="flex flex-row gap-3 mt-5 ">
               <div className="border-l-2 border-l-red-600"></div>
               {/* 
               //Todo: change p per link
