@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Rating from "../Rating";
+import { slug } from "@/shared/helpers/slug";
 
 type Props = {
   index: number;
@@ -29,7 +30,7 @@ export default function Information({
       <div className="flex justify-center gap-6">
         <Link
           className="text-2xl text-center transition-all duration-200 ease-in hover:text-gray-300 hover:text-[25px] cursor-pointer"
-          href={`/movie/${id}`}
+          href={`/movie/${id}-${slug(title)}`}
         >
           {title}
         </Link>
