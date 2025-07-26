@@ -13,7 +13,7 @@ export default function NavItems() {
           title={link.title}
           path={link.path}
           icon={link.icon}
-          isActive={pathname.startsWith(link.path)}
+          isActive={link.path === pathname}
         />
       ))}
     </div>
