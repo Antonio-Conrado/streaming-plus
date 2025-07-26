@@ -3,6 +3,7 @@ import { fetchMoviesResponseSchema } from "@/shared/interfaces/movies";
 import type { FetchMoviesResponse } from "@/shared/interfaces/movies";
 import { Videos, videosSchema } from "@/shared/interfaces/videos";
 import { customFetch } from "../config/fetch";
+import { MovieCast, MovieCastSchema } from "@/shared/interfaces/castingMovie";
 
 export async function fetchTrendingMovies() {
   const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
@@ -31,4 +32,16 @@ export async function fetchLatetsMovies() {
   const url = `https://api.themoviedb.org/3/trending/movie/day?language=es-ES`;
 
   return await customFetch<FetchMoviesResponse>(url, fetchMoviesResponseSchema);
+}
+
+export async function fetchSimilarMovies(movie_id: number) {
+  const url = `https://api.themoviedb.org/3/movie/${movie_id}/similar?language=es-ES&page=1`;
+  return await customFetch<FetchMoviesResponse>(url, fetchMoviesResponseSchema);
+}
+
+export async function fetchCastingByMovie(movie_id: number) {
+  const url = `
+https://api.themoviedb.org/3/movie/${movie_id}/credits`;
+
+  return await customFetch<MovieCast>(url, MovieCastSchema);
 }
