@@ -4,6 +4,7 @@ import type { FetchMoviesResponse } from "@/shared/interfaces/movies";
 import { Videos, videosSchema } from "@/shared/interfaces/videos";
 import { customFetch } from "../config/fetch";
 import { MovieCast, MovieCastSchema } from "@/shared/interfaces/castingMovie";
+import { Genres, genresResponseSchema } from "@/shared/interfaces/genres";
 
 export async function fetchTrendingMovies(page = 1) {
   const url = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=${page}`;
@@ -44,4 +45,16 @@ export async function fetchCastingByMovie(movie_id: number) {
 https://api.themoviedb.org/3/movie/${movie_id}/credits`;
 
   return await customFetch<MovieCast>(url, MovieCastSchema);
+}
+
+export async function fetchSeriesGenres() {
+  const url = "https://api.themoviedb.org/3/genre/movie/list";
+
+  return await customFetch<Genres>(url, genresResponseSchema);
+}
+
+export async function fetchMoviesByGenres(genre_id: number) {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genre_id}&language=es-ES&page=1`;
+
+  return await customFetch<FetchMoviesResponse>(url, fetchMoviesResponseSchema);
 }

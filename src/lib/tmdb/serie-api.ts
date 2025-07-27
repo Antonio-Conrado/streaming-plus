@@ -4,6 +4,7 @@ import { Videos, videosSchema } from "@/shared/interfaces/videos";
 import { customFetch } from "../config/fetch";
 import { ShowSeason, ShowSeasonSchema } from "@/shared/interfaces/season";
 import { SerieCast, SerieCastSchema } from "@/shared/interfaces/castingSerie";
+import { Genres, genresResponseSchema } from "@/shared/interfaces/genres";
 
 export async function fetchOnTheAirSeries() {
   const url =
@@ -47,4 +48,16 @@ export async function fetchCastingBySerie(serie_id: number) {
 `;
 
   return await customFetch<SerieCast>(url, SerieCastSchema);
+}
+
+export async function fetchSeriesGenres() {
+  const url = "https://api.themoviedb.org/3/genre/tv/list";
+
+  return await customFetch<Genres>(url, genresResponseSchema);
+}
+
+export async function fetchSeriesByGenres(genre_id: number) {
+  const url = `https://api.themoviedb.org/3/discover/tv?with_genres=${genre_id}&language=es-ES&sort_by=popularity.desc&page=1`;
+
+  return await customFetch<Series>(url, SeriesSchema);
 }
