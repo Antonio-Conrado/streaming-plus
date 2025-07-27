@@ -53,9 +53,9 @@ export default function ShowEpisodes({ serie }: Props) {
             {serie.seasons
               .filter((season) => season.name !== "Especiales")
               .map((season) => (
-                <li key={season.id} className="w-32">
+                <li key={season.id} className="w-fit ">
                   <button
-                    className="btn btn-success rounded-md"
+                    className="btn btn-success rounded-md h-full"
                     onClick={() => handleShowEpisodes(season.season_number)}
                   >
                     {season.name}
