@@ -57,7 +57,7 @@ export default function InfiniteScroll<T extends Media>({
 
   return (
     <main className="relative">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
         {items.map((item) => (
           <Card key={item.id} data={item} />
         ))}

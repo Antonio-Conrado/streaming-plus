@@ -18,6 +18,7 @@ export default function Actor<T extends Person>({ data }: CardProps<T>) {
             fill
             priority
             className="object-cover rounded-full"
+            sizes="220px"
           />
         </div>
 
