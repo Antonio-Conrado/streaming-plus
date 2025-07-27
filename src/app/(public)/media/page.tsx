@@ -11,13 +11,14 @@ type MediaItem = {
 };
 
 type Props = {
-  searchParams: { query?: string };
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
 export default async function MediaPage({ searchParams }: Props) {
-  const query = searchParams.query?.trim();
-  if (!query) return notFound();
+  const params = await searchParams;
+  const query = params.query;
 
+  if (!query) return notFound();
   const data = await fetchSearchMedia(query);
 
   return (
