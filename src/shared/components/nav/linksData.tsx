@@ -22,7 +22,7 @@ export const linksData: NavigationLink[] = [
   },
   {
     icon: <Film className="w-5 h-5" />,
-    title: "Anime",
+    title: "Animes",
     path: "/animes",
     isActive: false,
   },
