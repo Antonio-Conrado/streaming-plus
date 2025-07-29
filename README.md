@@ -6,6 +6,11 @@ This project is built with **Next.js**, using **Tailwind CSS**, **DaisyUI**, and
 
 It consumes data from [The Movie Database (TMDb) API](https://www.themoviedb.org/) to fetch movie and series information.
 
+## Online Demo
+
+The frontend demo is available at:  
+[https://streaming-plus-media.netlify.app](https://streaming-plus-media.netlify.app)
+
 ---
 
 ## Requirements
