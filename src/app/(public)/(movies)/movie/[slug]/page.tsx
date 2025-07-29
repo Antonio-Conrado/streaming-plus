@@ -30,7 +30,9 @@ export default async function MoviePage({ params }: Props) {
       />
 
       <GeneralInformation
+        id={movie.id}
         title={movie.title}
+        poster_path={movie.poster_path ?? ""}
         vote_average={movie.vote_average}
         overview={movie.overview}
         genres={movie.genres}

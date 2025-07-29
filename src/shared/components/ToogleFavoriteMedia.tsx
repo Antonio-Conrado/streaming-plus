@@ -21,7 +21,7 @@ type CardProps<T extends Media> = {
   user: User;
 };
 
-export default function AddFavorite<T extends Media>({
+export default function ToogleFavoriteMedia<T extends Media>({
   data,
   isFavorite,
   user,

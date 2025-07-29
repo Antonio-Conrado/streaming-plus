@@ -28,7 +28,9 @@ export default async function SeriePage({ params }: Props) {
       />
 
       <GeneralInformation
+        id={serie.id}
         title={serie.name}
+        poster_path={serie.poster_path ?? ""}
         vote_average={serie.vote_average}
         overview={serie.overview}
         genres={serie.genres}

@@ -4,12 +4,20 @@ import { imageLink } from "../data/const";
 import Rating from "./Rating";
 import { Media } from "../interfaces/mediaInformation";
 import { generateMediaUrl } from "../helpers/generateMediaUrl";
+import { User } from "../interfaces/user";
+import ToogleFavoriteMedia from "./ToogleFavoriteMedia";
 
 type CardProps<T extends Media> = {
   data: T;
+  isFavorite: boolean;
+  user: User;
 };
 
-export default function Card<T extends Media>({ data }: CardProps<T>) {
+export default function Card<T extends Media>({
+  data,
+  isFavorite,
+  user,
+}: CardProps<T>) {
   return (
     <Link href={generateMediaUrl(data)}>
       <div
@@ -32,17 +40,24 @@ export default function Card<T extends Media>({ data }: CardProps<T>) {
       "
       >
         <div className="w-full h-80 bg-gray-100 overflow-hidden rounded-t-lg">
-          <Image
-            src={`${imageLink}/w500/${data.poster_path}`}
-            alt={data.title ?? data.name ?? "El título no está disponible"}
-            width={320}
-            height={256}
-            priority
-            style={{
-              objectFit: "cover",
-            }}
-            className="hover:scale-115 transition-all duration-300 ease-in"
-          />
+          <div className="relative">
+            <Image
+              src={`${imageLink}/w500/${data.poster_path}`}
+              alt={data.title ?? data.name ?? "El título no está disponible"}
+              width={320}
+              height={256}
+              priority
+              style={{
+                objectFit: "cover",
+              }}
+              className="hover:scale-115 transition-all duration-300 ease-in "
+            />
+            <ToogleFavoriteMedia
+              data={data}
+              isFavorite={isFavorite}
+              user={user}
+            />
+          </div>
         </div>
 
         <div className="flex items-center justify-center gap-3 py-3 px-4 w-full">

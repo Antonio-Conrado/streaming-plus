@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { linksData } from "./linksData";
 import NavLink from "./NavLink";
 import Search from "./Search";
+import User from "../user/User";
 
 export default function NavItems() {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function NavItems() {
             isActive={link.path === pathname}
           />
         ))}
+        <User />
       </div>
     </div>
   );
