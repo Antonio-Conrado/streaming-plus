@@ -8,7 +8,7 @@ export default async function AnimesPage() {
   if (!animes) return notFound();
   return (
     <div className="my-10">
-      <h1 className="text-2xl ml-3 my-2">Animes</h1>
+      <h1 className="text-2xl ml-3  mt-10 mb-5">Animes</h1>
       <InfiniteScroll type="SERIES" data={animes} />
     </div>
   );

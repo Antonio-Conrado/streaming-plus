@@ -10,7 +10,7 @@ export default async function SeriesPage() {
   return (
     <div className="my-10">
       <Genres type="SERIES" />
-      <h1 className="text-2xl ml-3 my-2">Series</h1>
+      <h1 className="text-2xl ml-3 mt-10 mb-5">Series</h1>
       <InfiniteScroll type="SERIES" data={series} />
     </div>
   );

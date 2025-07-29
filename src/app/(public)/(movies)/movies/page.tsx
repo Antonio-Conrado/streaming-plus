@@ -9,7 +9,7 @@ export default async function MoviesPage() {
   return (
     <div className="my-10">
       <Genres type="MOVIES" />
-      <h1 className="text-2xl ml-3 my-2">Películas</h1>
+      <h1 className="text-2xl ml-3 mt-10 mb-5">Películas</h1>
       <InfiniteScroll type="MOVIES" data={movies} />
     </div>
   );
