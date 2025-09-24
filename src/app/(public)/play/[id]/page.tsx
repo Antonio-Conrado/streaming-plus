@@ -1,4 +1,5 @@
-import { playVideo } from "@/shared/data/const";
+import PlayStreaming from "@/shared/components/PlayStreaming";
+import { redirect } from "next/navigation";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -6,13 +7,6 @@ type Props = {
 
 export default async function PlayStreamingPage({ params }: Props) {
   const { id } = await params;
-
-  return (
-    <iframe
-      src={`${playVideo}/${id}`}
-      className="w-full h-[90vh] "
-      allowFullScreen
-      frameBorder={0}
-    />
-  );
+  if (!id) return redirect("/404");
+  return <PlayStreaming id={id} />;
 }

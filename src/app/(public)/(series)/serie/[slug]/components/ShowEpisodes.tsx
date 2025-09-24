@@ -17,11 +17,17 @@ export default function ShowEpisodes({ serie }: Props) {
     season: number;
     episode: number;
   } | null>(null);
+  const [ready, setReady] = useState(false);
+
   const handleShowEpisodes = async (season_number: number) => {
     const season = await fetchSeasonById(serie.id, season_number);
-
     if (!season) return;
     setEpisodes(season.episodes);
+  };
+
+  const watchEpisode = (season_number: number, episode_number: number) => {
+    setCurrentEpisode({ season: season_number, episode: episode_number });
+    setReady(false);
   };
 
   useEffect(() => {
@@ -33,27 +39,21 @@ export default function ShowEpisodes({ serie }: Props) {
         dropdownRef.current.removeAttribute("open");
       }
     };
-
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-
-  const watchEpisode = (season_number: number, episode_number: number) => {
-    setCurrentEpisode({ season: season_number, episode: episode_number });
-  };
 
   return (
     <section className="mt-5 my-10">
       <div className="flex justify-around gap-5 md:pl-82">
         <ShowTrailer id={serie.id} type="SERIE" />
-
         <details ref={dropdownRef} className="dropdown relative">
-          <summary className="btn btn-accent  rounded-md">Temporadas</summary>
-          <ul className="absolute top-full left-[-25] md:left-[-5] menu bg-base-100 rounded-box z-10 w-40 md:w-52  gap-2 shadow-sm max-h-52 flex flex-row overflow-y-auto">
+          <summary className="btn btn-accent rounded-md">Temporadas</summary>
+          <ul className="absolute top-full left-[-25] md:left-[-5] menu bg-base-100 rounded-box z-10 w-40 md:w-52 gap-2 shadow-sm max-h-52 flex flex-row overflow-y-auto">
             {serie.seasons
               .filter((season) => season.name !== "Especiales")
               .map((season) => (
-                <li key={season.id} className="w-fit ">
+                <li key={season.id} className="w-fit">
                   <button
                     className="btn btn-success rounded-md h-full"
                     onClick={() => handleShowEpisodes(season.season_number)}
@@ -80,8 +80,17 @@ export default function ShowEpisodes({ serie }: Props) {
         ))}
       </div>
 
-      <div className="mt-10 w-[95%] mx-auto">
-        {currentEpisode && (
+      <div className="mt-10 w-[95%] mx-auto flex justify-center">
+        {currentEpisode && !ready && (
+          <button
+            onClick={() => setReady(true)}
+            className="btn btn-accent rounded-md"
+          >
+            Ver episodio
+          </button>
+        )}
+
+        {currentEpisode && ready && (
           <iframe
             src={`${playSerie}/${serie.id}/${currentEpisode.season}/${currentEpisode.episode}`}
             className="w-full h-[500px] lg:h-[700px]"
